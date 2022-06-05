@@ -15,7 +15,7 @@
 
 ### Links
 
-- Live Site URL: [GitHub Pages]()
+- Live Site URL: [GitHub Pages](https://hardbuffet.github.io/Profile-Card-Component/)
 
 ## My process
 

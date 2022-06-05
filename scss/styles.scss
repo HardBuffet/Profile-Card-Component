@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+// - Mobile: 375px
+// - Desktop: 1440px
+
+// ****************************************************************************
+// *                                  0. z-index                                 *
+// ****************************************************************************
+$minusAlpha: -99999;
+
+// ****************************************************************************
+// *                                  1. mixins                                  *
+// ****************************************************************************
+@mixin flex(
+            $center: false,
+            $ai: false,
+            $jc: false,
+            $aiVal: center,
+            $jcVal: center
+            ) {
+  display: flex;
+  @if $center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  @if $ai {
+    align-items: $aiVal;
+  }
+
+  @if $jc {
+    justify-content: $jcVal;
+  }
+}
+
+// ****************************************************************************
+// *                                  2. colors                                  *
+// ****************************************************************************
+$darkCyan: hsl(185, 75%, 39%);
+$veryDarkDesaturatedBlue: hsl(229, 23%, 23%);
+$darkGrayIshBlue: hsl(227, 10%, 46%);
+$darkGray: hsl(0, 0%, 59%);
+$white: #fff;
+
+$bodyBg: $darkCyan;
+$bodyColor: $veryDarkDesaturatedBlue;
+$hrBg: hsl(0, 0%, 90%);
+$cardBg: $white;
+$statsTitleColor: $darkGray;
+$statsBg: $white;
+$personInfoBg: $white;
+$ageColor: $darkGrayIshBlue;
+$cityColor: $darkGrayIshBlue;
+$avatarImgBorderColor: $white;
+// ****************************************************************************
+// *                                   3. fonts                                  *
+// ****************************************************************************
+$primaryFont: 'Kumbh Sans', sans-serif;
+$fw-400: 400;
+$fw-700: 700;
+
+// ****************************************************************************
+// *                                   4. reset                                  *
+// ****************************************************************************
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $bodyBg;
+  color: $bodyColor;
+  font: {
+    family: $primaryFont;
+    size: 1.125rem;
+  }
+}
+
+hr {
+  border: none;
+  width: 100%;
+  height: 1px;
+  background: $hrBg;
+  margin: 3px 0;
+}
+
+// ****************************************************************************
+// *                                  5. blocks                                  *
+// ****************************************************************************
+.hide {
+  position: fixed;
+  left: -10000vw;
+  color: transparent;
+  z-index: $minusAlpha;
+}
+
+.page {
+  @include flex($center: true);
+  min-height: 100vh;
+}
+
+.bg-decoration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $minusAlpha;
+  width: 100vw;
+  height: 100vh;
+  &__img {
+    $equalSize: 978px;
+    $equalPosX: -800px;
+    $equalPosY: -550px;
+
+    width: $equalSize;
+    height: $equalSize;
+    display: block;
+    position: fixed;
+    &_top {
+      top: $equalPosY;
+      left: $equalPosX;
+    }
+
+    &_bottom {
+      bottom: $equalPosY;
+      right: $equalPosX;
+    }
+  }
+}
+
+.card {
+  width: 20.438rem; // fallback
+  width: clamp(20.438rem, 19.7rem + 3vw, 22.5rem);
+  background: $cardBg;
+  border: {
+    radius: 15px;
+  }
+  overflow: hidden;
+  display: grid;
+  grid: {
+    template: {
+      rows: auto 1fr auto;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  &__person-info {
+    margin: {
+      top: -73px;
+    }
+  }
+}
+
+.person {
+  &-info {
+    padding: 1.25em;
+    text: {
+      align: center;
+    }
+    &__avatar {
+      border: 5px solid $avatarImgBorderColor {
+        radius: 50%;
+      }
+    }
+    &__name {
+      font: {
+        weight: $fw-700;
+      }
+      margin: 15px 0 8px;
+    }
+    &__age {
+      margin: {
+        left: 6px;
+      }
+      font: {
+        weight: $fw-400;
+      }
+      color: $ageColor;
+    }
+    &__city {
+      color: $cityColor;
+      font: {
+        size: 0.95rem;
+      }
+    }
+  }
+}
+
+.stats {
+  @include flex($jc: true);
+  gap: 0rem;
+  gap: clamp(0rem, -0.22007042253521128rem + 0.9389671361502347vw, 0.625rem);
+  background: $statsBg;
+  &__col {
+    padding: 1.56em 1.25em;
+    text: {
+      align: center;
+    }
+    display: grid;
+    gap: 4px;
+  }
+  &__number {
+    font: {
+      weight: $fw-700;
+    }
+  }
+  &__title {
+    color: $statsTitleColor;
+    font: {
+      size: 0.8rem;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .bg-decoration {
+    &__img {
+      $equalPosX: -650px;
+
+      &_top {
+        left: $equalPosX;
+      }
+
+      &_bottom {
+        right: $equalPosX;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .bg-decoration {
+    &__img {
+      $equalPosX: -500px;
+
+      &_top {
+        left: $equalPosX;
+      }
+
+      &_bottom {
+        right: $equalPosX;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .bg-decoration {
+    &__img {
+      &_top {
+        left: -300px;
+      }
+
+      &_bottom {
+        bottom: -630px;
+        right: -235px;
+      }
+    }
+  }
+}
+
+.attribution {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: #111;
+  padding: 10px;
+
+  p {
+    line-height: 22px;
+    font-size: 1rem;
+    color: white;
+  }
+
+  a {
+    color: cyan;
+
+    &:hover {
+      color: red;
+    }
+  }
+}

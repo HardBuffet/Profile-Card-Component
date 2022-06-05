@@ -1,0 +1,44 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Frontend Mentor | Profile card component
+    link(rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png")
+    link(rel="stylesheet" href="assets/css/styles.css")
+  body.page
+    .bg-decoration
+      img.bg-decoration__img.bg-decoration__img_top(src="images/bg-pattern-top.svg" alt="" data-bg-img)
+      img.bg-decoration__img.bg-decoration__img_bottom(src="images/bg-pattern-bottom.svg" alt="" data-bg-img)
+    header
+      h1.hide Profile Card Component
+    main.card
+      img.card__img(src="images/bg-pattern-card.svg" alt="" width="350" height="140")
+      .person-info.card__person-info
+        img.person-info__avatar(src="images/image-victor.jpg" alt="")
+        p.person-info__name Victor Crest
+          span.person-info__age
+            |
+            | 26
+        p.person-info__city London
+      hr
+      .stats
+        .stats__col
+          p.stats__number 80K
+          p.stats__title Followers
+        .stats__col
+          p.stats__number 803K
+          p.stats__title Likes
+        .stats__col
+          p.stats__number 1.4K
+          p.stats__title Photos
+    footer.attribution
+          p
+            | Challenge by
+            |
+            a(href="https://www.frontendmentor.io?ref=challenge" target="_blank") Frontend Mentor
+            | .
+            br
+            | Coded by
+            |
+            a(href="https://www.frontendmentor.io/profile/HardBuffet") HardBuffet
